@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# React Fetch API Example
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple **React.js project** that demonstrates how to fetch data from an external API using the **Fetch API** and display it in a table.
 
-## Available Scripts
+## 🚀 Features
+- Fetches data from [JSONPlaceholder](https://jsonplaceholder.typicode.com/users)
+- Displays user details in a table (ID, Name, Email, City)
+- Shows **Loading...** while fetching
+- Handles errors gracefully
 
-In the project directory, you can run:
+## 📂 Project Setup
 
-### `npm start`
+### 1. Create React App
+```bash
+npx create-react-app fetch-demo
+cd fetch-demo
+2. Install Dependencies (Optional: For Styling)
+bash
+Copy
+Edit
+npm install bootstrap
+3. Run the App
+bash
+Copy
+Edit
+npm start
+Now open http://localhost:3000 in your browser.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+📝 Code Overview
+The main logic is inside App.js:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+javascript
+Copy
+Edit
+useEffect(() => {
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then((response) => {
+      if (!response.ok) throw new Error("Failed to fetch data");
+      return response.json();
+    })
+    .then((data) => setUsers(data))
+    .catch((error) => setError(error.message));
+}, []);
+Uses useEffect to fetch data when the component mounts
 
-### `npm test`
+Stores data in React state using useState
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Handles loading and error states
 
-### `npm run build`
+📊 Output
+Displays data in a table format
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Example:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ID	Name	Email	City
+1	Leanne Graham	Sincere@april.biz	Gwenborough
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+📦 Technologies Used
+React.js
 
-### `npm run eject`
+Fetch API
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Bootstrap (for styling, optional)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+🤝 Contributing
+Feel free to fork this repo and submit a pull request with improvements.
